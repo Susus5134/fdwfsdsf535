@@ -2,8 +2,8 @@ name: Run Autoclaim
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '0 */3 * * *'
+#  schedule:
+#    - cron: '0 */3 * * *'
 
 concurrency:
   group: 'pythonC'  # 设置唯一的组ID
@@ -147,7 +147,7 @@ jobs:
   Tomarket:
     runs-on: ubuntu-latest
     continue-on-error: true
-    if: True
+    if: False
     timeout-minutes: 150
     env:
       WP_CONFIG: ${{ secrets.WARP_CONFIG }}
