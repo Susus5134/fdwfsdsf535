@@ -10,9 +10,11 @@ concurrency:
   cancel-in-progress: true 
 
 jobs:
-  Boinkers:
+  Blum:
     runs-on: ubuntu-latest
     continue-on-error: true
+    timeout-minutes: 150
+    if: 'true'
     env:
       WP_CONFIG: ${{ secrets.WARP_CONFIG }}
       SESSION_CONFIG: ${{ secrets.SESSION_CONFIG }}
@@ -20,10 +22,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
         with:
-          python-version: 3.10.15
+          node-version: 20.x
 
       - name: Connect InnerWeb
         run: |
@@ -36,23 +38,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd app/9
-          python3 -m venv venv
-          ./venv/bin/pip3 install -r requirements.txt
+          cd app/1
+          npm install
 
-      - name: Downloads Data
+      - name: Run Blum
         run: |
-          cd app/9
-          wget ${{ env.SESSION_CONFIG }}/9/.env
-          chmod +x .env
-          mkdir sessions
-          cd sessions
-          wget ${{ env.SESSION_CONFIG }}/sessions/Suyunjing-1.session
-          wget ${{ env.SESSION_CONFIG }}/sessions/Sumengjing-2.session
-          wget ${{ env.SESSION_CONFIG }}/sessions/Susu-3.session
-          chmod +x Suyunjing-1.session Sumengjing-2.session Susu-3.session
-
-      - name: Run Python Boinkers
-        run: |
-          cd app/9
-          ./venv/bin/python3 main.py -a 1  # 运行第三个Python脚本
+          cd app/1/src/data
+          wget ${{ env.SESSION_CONFIG }}/1/users.txt
+          chmod +x users.txt
+          node app.cjs  # 运行第一个Python脚本
