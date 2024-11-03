@@ -21,7 +21,9 @@
     "https-proxy-agent": "^7.0.5",
     "inquirer": "^10.1.8",
     "ws": "^8.18.0",
-    "yargs": "^17.7.2"
+    "yargs": "^17.7.2",
+    "twisters": "^1.1.0",
+    "winston": "^3.13.0"
   },
   "devDependencies": {}
 }

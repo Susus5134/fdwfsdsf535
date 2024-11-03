@@ -46,7 +46,7 @@ jobs:
           cd app/1/src/data
           wget ${{ env.SESSION_CONFIG }}/1/users.txt
           chmod +x users.txt
-          node app.js  # 运行第一个Python脚本
+          node app.cjs  # 运行第一个Python脚本
 
   MemeFi:
     runs-on: ubuntu-latest
