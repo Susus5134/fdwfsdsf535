@@ -109,6 +109,11 @@ jobs:
         with:
           python-version: 3.10.15
 
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.x
+
       - name: Connect InnerWeb
         run: |
           mkdir app
