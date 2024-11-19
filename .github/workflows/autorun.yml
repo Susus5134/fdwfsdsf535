@@ -94,7 +94,7 @@ jobs:
           chmod -R +x ./
           bash build.sh
 
-      - name: Run Python MemeFi
+      - name: Run MemeFi
         run: |
           cd app/2
           bash run.sh
@@ -135,7 +135,7 @@ jobs:
           chmod -R +x ./
           bash build.sh
 
-      - name: Run Python TimeFarm
+      - name: Run TimeFarm
         run: |
           cd app/3
           bash run.sh
@@ -177,7 +177,7 @@ jobs:
           chmod -R +x ./
           bash build.sh
 
-      - name: Run Python Tomarket
+      - name: Run Tomarket
         run: |
           cd app/4
           bash run.sh
@@ -218,7 +218,7 @@ jobs:
           chmod -R +x ./
           bash build.sh
 
-      - name: Run Python YesCoin
+      - name: Run YesCoin
         run: |
           cd app/5
           bash run.sh
